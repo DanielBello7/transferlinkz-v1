@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ContactForm } from "@/components/contact-form";
 import { QuoteForm } from "@/components/quote-form";
@@ -81,15 +82,19 @@ const FAQ_ITEMS = [
 
 export default function Home() {
 	return (
-		<div className="min-h-screen bg-zinc-950 text-zinc-100 font-sans">
+		<div className="page-bg-blue min-h-screen text-white font-sans">
 			{/* Header */}
-			<header className="fixed top-0 left-0 right-0 z-50 border-b border-zinc-800/50 bg-zinc-950/90 backdrop-blur-md">
+			<header className="fixed top-0 left-0 right-0 z-50 border-b border-slate-700/50 bg-[#0c1222]/90 backdrop-blur-md">
 				<nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
 					<Link href="#" className="flex items-center gap-2">
-						<span className="flex h-8 w-8 items-center justify-center rounded-md bg-violet-500 text-white">
-							<span className="text-sm font-bold">T</span>
-						</span>
-						<span className="text-xl font-semibold tracking-tight">
+						<Image
+							src="/transferlinkz-logo.png"
+							alt="TransferLinkz"
+							width={32}
+							height={32}
+							className="h-8 w-8 object-contain"
+						/>
+						<span className="text-xl font-semibold tracking-tight text-cyan-400">
 							TransferLinkz
 						</span>
 					</Link>
@@ -98,7 +103,7 @@ export default function Home() {
 							<Link
 								key={item.label}
 								href={item.href}
-								className="text-sm text-zinc-300 transition hover:text-white">
+								className="text-sm text-slate-300 transition hover:text-white">
 								{item.label}
 							</Link>
 						))}
@@ -106,13 +111,8 @@ export default function Home() {
 					<div className="flex items-center gap-4">
 						<Link
 							href="#contact"
-							className="text-sm text-zinc-300 transition hover:text-white">
-							Login
-						</Link>
-						<Link
-							href="#contact"
-							className="flex items-center gap-2 rounded-lg bg-violet-600 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-violet-500">
-							Start for free
+							className="btn-cta-gradient flex items-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium transition">
+							Contact
 							<svg
 								className="h-4 w-4"
 								fill="none"
@@ -133,22 +133,26 @@ export default function Home() {
 			{/* Hero */}
 			<section className="relative px-6 pt-32 pb-20 text-center">
 				<div className="mx-auto max-w-4xl">
-					<h1 className="text-4xl font-bold leading-tight tracking-tight sm:text-5xl md:text-6xl">
+					<div
+						className="mb-4 h-0.5 w-12 rounded-full bg-cyan-400 mx-auto"
+						aria-hidden
+					/>
+					<h1 className="text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl md:text-6xl">
 						Reducing Arrival Risk & Operational Escalations with TransferLinkz
 					</h1>
-					<p className="mt-8 text-lg text-violet-300 font-medium">
+					<p className="mt-8 text-lg text-slate-300">
 						TransferLinkz is not a messaging tool — it is arrival insurance.
 					</p>
 					<div className="mt-10 flex flex-wrap items-center justify-center gap-6">
 						<Link
 							href="#solution"
-							className="inline-flex items-center gap-2 rounded-lg bg-violet-600 px-6 py-3.5 text-sm font-medium text-white transition hover:bg-violet-500">
+							className="btn-cta-gradient inline-flex items-center gap-2 rounded-lg px-6 py-3.5 text-sm font-medium transition">
 							See how it works
 							<span aria-hidden>→</span>
 						</Link>
 						<Link
 							href="#contact"
-							className="inline-flex items-center gap-2 rounded-lg border border-zinc-600 px-6 py-3.5 text-sm font-medium transition hover:border-zinc-500 hover:bg-zinc-800/50">
+							className="inline-flex items-center gap-2 rounded-lg border border-slate-600 px-6 py-3.5 text-sm font-medium text-slate-200 transition hover:border-slate-500 hover:bg-slate-800/40">
 							Get in touch
 						</Link>
 					</div>
@@ -156,37 +160,40 @@ export default function Home() {
 
 				{/* Product mockup - arrival link / status */}
 				<div className="mx-auto mt-16 max-w-5xl">
-					<div className="overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900/80 shadow-2xl shadow-violet-500/10">
-						<div className="flex border-b border-zinc-800 px-4 py-3">
+					<div className="overflow-hidden rounded-2xl border border-slate-700 bg-slate-900/60 shadow-2xl shadow-cyan-500/10">
+						<div className="flex border-b border-slate-700 px-4 py-3">
 							<div className="flex gap-2">
-								<span className="h-2.5 w-2.5 rounded-full bg-zinc-600" />
-								<span className="h-2.5 w-2.5 rounded-full bg-zinc-600" />
-								<span className="h-2.5 w-2.5 rounded-full bg-zinc-600" />
+								<span className="h-2.5 w-2.5 rounded-full bg-slate-600" />
+								<span className="h-2.5 w-2.5 rounded-full bg-slate-600" />
+								<span className="h-2.5 w-2.5 rounded-full bg-slate-600" />
 							</div>
 						</div>
 						<div className="flex min-h-[280px] flex-col p-6 md:flex-row md:items-stretch">
-							<aside className="w-full border-b border-zinc-800 pb-4 md:w-48 md:border-b-0 md:border-r md:pb-0 md:pr-4">
-								<div className="text-xs font-medium uppercase tracking-wider text-zinc-500">
+							<aside className="w-full border-b border-slate-700 pb-4 md:w-48 md:border-b-0 md:border-r md:pb-0 md:pr-4">
+								<div className="text-xs font-medium uppercase tracking-wider text-slate-500">
 									Arrival link
 								</div>
 								<div className="mt-2 space-y-2">
 									{["Driver details", "Live status", "Contact"].map((item) => (
-										<div key={item} className="h-8 rounded-lg bg-zinc-800/80" />
+										<div
+											key={item}
+											className="h-8 rounded-lg bg-slate-800/80"
+										/>
 									))}
 								</div>
 							</aside>
 							<main className="flex-1 pt-4 md:pt-0 md:pl-6">
-								<div className="text-xs font-medium uppercase tracking-wider text-zinc-500">
+								<div className="text-xs font-medium uppercase tracking-wider text-slate-500">
 									Live status
 								</div>
 								<div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3">
 									{[1, 2, 3, 4, 5, 6].map((i) => (
 										<div
 											key={i}
-											className="rounded-xl border border-zinc-800 bg-zinc-800/50 p-4">
-											<div className="h-2 w-2/3 rounded bg-zinc-600" />
-											<div className="mt-2 h-2 w-full rounded bg-zinc-700" />
-											<div className="mt-3 h-3 w-1/2 rounded-full bg-emerald-500/30" />
+											className="rounded-xl border border-slate-700 bg-slate-800/50 p-4">
+											<div className="h-2 w-2/3 rounded bg-slate-600" />
+											<div className="mt-2 h-2 w-full rounded bg-slate-700" />
+											<div className="mt-3 h-3 w-1/2 rounded-full bg-cyan-500/30" />
 										</div>
 									))}
 								</div>
@@ -197,10 +204,10 @@ export default function Home() {
 			</section>
 
 			{/* The Problem */}
-			<section id="problem" className="border-t border-zinc-800/50 px-6 py-24">
+			<section id="problem" className="border-t border-slate-700/50 px-6 py-24">
 				<div className="mx-auto max-w-6xl">
-					<h2 className="text-3xl font-semibold">The Problem</h2>
-					<p className="mt-4 max-w-3xl text-lg text-zinc-400">
+					<h2 className="text-3xl font-semibold text-white">The Problem</h2>
+					<p className="mt-4 max-w-3xl text-lg text-slate-400">
 						Arrival is the most failure-prone moment of the guest journey. It
 						is:
 					</p>
@@ -208,17 +215,17 @@ export default function Home() {
 						{PROBLEM_POINTS.map((point) => (
 							<li
 								key={point}
-								className="rounded-lg border border-zinc-700 bg-zinc-800/50 px-4 py-2.5 text-sm font-medium text-zinc-200">
+								className="rounded-lg border border-slate-600 bg-slate-800/50 px-4 py-2.5 text-sm font-medium text-slate-200">
 								{point}
 							</li>
 						))}
 					</ul>
-					<p className="mt-8 text-lg text-zinc-400">
+					<p className="mt-8 text-lg text-slate-400">
 						When transfers fail, the tour operator absorbs:
 					</p>
 					<ul className="mt-4 space-y-2">
 						{OPERATOR_COSTS.map((cost) => (
-							<li key={cost} className="flex items-center gap-2 text-zinc-300">
+							<li key={cost} className="flex items-center gap-2 text-slate-300">
 								<span className="text-red-400/80">×</span> {cost}
 							</li>
 						))}
@@ -229,18 +236,18 @@ export default function Home() {
 			{/* The Root Cause */}
 			<section
 				id="root-cause"
-				className="border-t border-zinc-800/50 px-6 py-24">
+				className="border-t border-slate-700/50 px-6 py-24">
 				<div className="mx-auto max-w-6xl">
-					<h2 className="text-3xl font-semibold">The Root Cause</h2>
+					<h2 className="text-3xl font-semibold text-white">The Root Cause</h2>
 					<ul className="mt-8 space-y-4">
 						{ROOT_CAUSES.map((cause) => (
 							<li
 								key={cause}
-								className="flex items-start gap-3 rounded-xl border border-zinc-800 bg-zinc-900/30 p-5">
+								className="flex items-start gap-3 rounded-xl border border-slate-700 bg-slate-900/40 p-5">
 								<span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-amber-500/20 text-amber-400">
 									!
 								</span>
-								<span className="text-zinc-300">{cause}</span>
+								<span className="text-slate-300">{cause}</span>
 							</li>
 						))}
 					</ul>
@@ -248,31 +255,33 @@ export default function Home() {
 			</section>
 
 			{/* The Solution: TransferLinkz */}
-			<section id="solution" className="border-t border-zinc-800/50 px-6 py-24">
+			<section
+				id="solution"
+				className="border-t border-slate-700/50 px-6 py-24">
 				<div className="mx-auto max-w-6xl">
-					<h2 className="text-3xl font-semibold">
+					<h2 className="text-3xl font-semibold text-white">
 						The Solution: TransferLinkz
 					</h2>
-					<p className="mt-4 max-w-3xl text-lg text-zinc-400">
+					<p className="mt-4 max-w-3xl text-lg text-slate-400">
 						TransferLinkz is Arrival Risk Management software:
 					</p>
 					<div className="mt-10 grid gap-6 sm:grid-cols-3">
 						{SOLUTION_POINTS.map(({ who, what }) => (
 							<div
 								key={who}
-								className="rounded-2xl border border-zinc-800 bg-zinc-900/30 p-6 transition hover:border-violet-500/30">
-								<div className="flex h-12 w-12 items-center justify-center rounded-xl bg-violet-500/20 text-violet-400 font-semibold">
+								className="rounded-2xl border border-slate-700 bg-slate-900/40 p-6 transition hover:border-cyan-500/40">
+								<div className="flex h-12 w-12 items-center justify-center rounded-xl bg-cyan-500/20 text-cyan-400 font-semibold">
 									{who.slice(0, 1)}
 								</div>
 								<h3 className="mt-4 font-semibold text-white">{who}</h3>
-								<p className="mt-2 text-sm text-zinc-400">{what}</p>
+								<p className="mt-2 text-sm text-slate-400">{what}</p>
 							</div>
 						))}
 					</div>
 					<div className="mt-12 flex flex-wrap gap-4">
 						<Link
 							href="#contact"
-							className="inline-flex items-center gap-2 rounded-lg bg-violet-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-violet-500">
+							className="btn-cta-gradient inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-medium transition">
 							Get started
 							<span aria-hidden>→</span>
 						</Link>
@@ -281,18 +290,18 @@ export default function Home() {
 			</section>
 
 			{/* What This Fixes */}
-			<section id="fixes" className="border-t border-zinc-800/50 px-6 py-24">
+			<section id="fixes" className="border-t border-slate-700/50 px-6 py-24">
 				<div className="mx-auto max-w-6xl">
-					<h2 className="text-3xl font-semibold">What This Fixes</h2>
+					<h2 className="text-3xl font-semibold text-white">What This Fixes</h2>
 					<div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
 						{FIXES.map((fix) => (
 							<div
 								key={fix}
-								className="flex items-center gap-3 rounded-xl border border-zinc-800 bg-zinc-900/30 p-5">
+								className="flex items-center gap-3 rounded-xl border border-slate-700 bg-slate-900/40 p-5">
 								<span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-emerald-500/20 text-emerald-400">
 									✓
 								</span>
-								<span className="text-zinc-200">{fix}</span>
+								<span className="text-slate-200">{fix}</span>
 							</div>
 						))}
 					</div>
@@ -300,16 +309,18 @@ export default function Home() {
 			</section>
 
 			{/* Operational Impact */}
-			<section id="impact" className="border-t border-zinc-800/50 px-6 py-24">
+			<section id="impact" className="border-t border-slate-700/50 px-6 py-24">
 				<div className="mx-auto max-w-6xl">
-					<h2 className="text-3xl font-semibold">Operational Impact</h2>
+					<h2 className="text-3xl font-semibold text-white">
+						Operational Impact
+					</h2>
 					<ul className="mt-10 space-y-4">
 						{IMPACT_ITEMS.map((item) => (
 							<li
 								key={item}
-								className="flex items-center gap-3 rounded-xl border border-zinc-800 bg-zinc-900/30 px-6 py-4">
+								className="flex items-center gap-3 rounded-xl border border-slate-700 bg-slate-900/40 px-6 py-4">
 								<span className="text-emerald-500">✓</span>
-								<span className="text-zinc-200">{item}</span>
+								<span className="text-slate-200">{item}</span>
 							</li>
 						))}
 					</ul>
@@ -317,23 +328,23 @@ export default function Home() {
 			</section>
 
 			{/* Commercial Model */}
-			<section id="pricing" className="border-t border-zinc-800/50 px-6 py-24">
+			<section id="pricing" className="border-t border-slate-700/50 px-6 py-24">
 				<div className="mx-auto max-w-6xl">
-					<h2 className="text-center text-3xl font-semibold">
+					<h2 className="text-center text-3xl font-semibold text-white">
 						Commercial Model
 					</h2>
-					<p className="mt-4 text-center text-zinc-400">
+					<p className="mt-4 text-center text-slate-400">
 						Simple pricing that scales with your volume.
 					</p>
 					<div className="mt-12 flex flex-col items-center gap-8 sm:flex-row sm:justify-center">
 						{COMMERCIAL_POINTS.map((point) => (
 							<div
 								key={point}
-								className="flex w-full max-w-xs items-center gap-4 rounded-2xl border border-zinc-800 bg-zinc-900/30 p-6 sm:w-auto">
-								<span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-violet-500/20 text-violet-400">
+								className="flex w-full max-w-xs items-center gap-4 rounded-2xl border border-slate-700 bg-slate-900/40 p-6 sm:w-auto">
+								<span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-cyan-500/20 text-cyan-400">
 									✓
 								</span>
-								<span className="text-zinc-200">{point}</span>
+								<span className="text-slate-200">{point}</span>
 							</div>
 						))}
 					</div>
@@ -344,22 +355,22 @@ export default function Home() {
 			</section>
 
 			{/* Success Metrics */}
-			<section className="border-t border-zinc-800/50 px-6 py-24">
+			<section className="border-t border-slate-700/50 px-6 py-24">
 				<div className="mx-auto max-w-6xl">
-					<h2 className="text-center text-3xl font-semibold">
+					<h2 className="text-center text-3xl font-semibold text-white">
 						Success Metrics
 					</h2>
 					<div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
 						{SUCCESS_METRICS.map(({ label, direction }) => (
 							<div
 								key={label}
-								className="rounded-2xl border border-zinc-800 bg-zinc-900/30 p-6 text-center">
+								className="rounded-2xl border border-slate-700 bg-slate-900/40 p-6 text-center">
 								<span
 									className="inline-flex h-10 w-10 items-center justify-center rounded-full text-xl font-bold text-white"
 									aria-hidden>
 									{direction === "down" ? "↓" : "↑"}
 								</span>
-								<p className="mt-3 font-medium text-zinc-200">{label}</p>
+								<p className="mt-3 font-medium text-slate-200">{label}</p>
 							</div>
 						))}
 					</div>
@@ -367,14 +378,14 @@ export default function Home() {
 			</section>
 
 			{/* Positioning CTA */}
-			<section className="border-t border-zinc-800/50 px-6 py-24">
+			<section className="border-t border-slate-700/50 px-6 py-24">
 				<div className="mx-auto max-w-3xl text-center">
-					<p className="text-2xl font-semibold text-zinc-100 sm:text-3xl">
+					<p className="text-2xl font-semibold text-white sm:text-3xl">
 						TransferLinkz is not a messaging tool — it is arrival insurance.
 					</p>
 					<Link
 						href="#contact"
-						className="mt-8 inline-flex items-center gap-2 rounded-lg bg-violet-600 px-6 py-3.5 text-sm font-medium text-white transition hover:bg-violet-500">
+						className="btn-cta-gradient mt-8 inline-flex items-center gap-2 rounded-lg px-6 py-3.5 text-sm font-medium transition">
 						Get started — it&apos;s free
 						<span aria-hidden>→</span>
 					</Link>
@@ -382,31 +393,31 @@ export default function Home() {
 			</section>
 
 			{/* Contact & FAQ */}
-			<section id="contact" className="border-t border-zinc-800/50 px-6 py-24">
+			<section id="contact" className="border-t border-slate-700/50 px-6 py-24">
 				<div className="mx-auto max-w-3xl space-y-20">
 					<div>
-						<h2 className="text-3xl font-semibold">Contact us</h2>
-						<p className="mt-2 text-zinc-400">
+						<h2 className="text-3xl font-semibold text-white">Contact us</h2>
+						<p className="mt-2 text-slate-400">
 							Send us a message and we&apos;ll get back to you.
 						</p>
-						<div className="mt-8 rounded-2xl border border-zinc-800 bg-zinc-900/30 p-6">
+						<div className="mt-8 rounded-2xl border border-slate-700 bg-slate-900/40 p-6">
 							<ContactForm />
 						</div>
 					</div>
 					<div>
-						<h2 className="text-3xl font-semibold">
+						<h2 className="text-3xl font-semibold text-white">
 							Frequently asked questions
 						</h2>
 						<div className="mt-10 space-y-2">
 							{FAQ_ITEMS.map(({ q, a }) => (
 								<details
 									key={q}
-									className="group rounded-lg border border-zinc-800 bg-zinc-900/30">
-									<summary className="flex cursor-pointer list-none items-center justify-between px-5 py-4 text-left font-medium transition hover:bg-zinc-800/30 [&::-webkit-details-marker]:hidden">
+									className="group rounded-lg border border-slate-700 bg-slate-900/40">
+									<summary className="flex cursor-pointer list-none items-center justify-between px-5 py-4 text-left font-medium text-slate-200 transition hover:bg-slate-800/40 [&::-webkit-details-marker]:hidden">
 										{q}
 										<span className="shrink-0 transition group-open:rotate-180">
 											<svg
-												className="h-5 w-5 text-zinc-400"
+												className="h-5 w-5 text-slate-400"
 												fill="none"
 												stroke="currentColor"
 												viewBox="0 0 24 24">
@@ -419,7 +430,7 @@ export default function Home() {
 											</svg>
 										</span>
 									</summary>
-									<p className="border-t border-zinc-800 px-5 py-4 text-sm text-zinc-400">
+									<p className="border-t border-slate-700 px-5 py-4 text-sm text-slate-400">
 										{a}
 									</p>
 								</details>
@@ -430,12 +441,12 @@ export default function Home() {
 			</section>
 
 			{/* Footer */}
-			<footer className="border-t border-zinc-800/50 px-6 py-12">
+			<footer className="border-t border-slate-700/50 px-6 py-12">
 				<div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 sm:flex-row">
-					<span className="text-sm text-zinc-500">
+					<span className="text-sm text-slate-500">
 						© TransferLinkz. All rights reserved.
 					</span>
-					<div className="flex gap-8 text-sm text-zinc-400">
+					<div className="flex gap-8 text-sm text-slate-400">
 						<Link href="#" className="transition hover:text-white">
 							Privacy
 						</Link>

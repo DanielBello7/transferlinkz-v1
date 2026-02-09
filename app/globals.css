@@ -1,26 +1,66 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+	--background: #ffffff;
+	--foreground: #171717;
+	/* TransferLinkz dark blue theme */
+	--page-bg-start: #1a365d;
+	--page-bg-end: #0c1222;
+	--grid-line: rgba(255, 255, 255, 0.04);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--font-sans: var(--font-geist-sans);
+	--font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+	:root {
+		--background: #0a0a0a;
+		--foreground: #ededed;
+	}
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+	background: var(--background);
+	color: var(--foreground);
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Dark blue page background with gradient + grid */
+.page-bg-blue {
+	background: linear-gradient(180deg, var(--page-bg-start) 0%, var(--page-bg-end) 100%);
+	background-attachment: fixed;
+	min-height: 100vh;
+}
+
+.page-bg-blue::before {
+	content: "";
+	position: fixed;
+	inset: 0;
+	background-image:
+		linear-gradient(var(--grid-line) 1px, transparent 1px),
+		linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+	background-size: 48px 48px;
+	pointer-events: none;
+	z-index: 0;
+}
+
+.page-bg-blue > * {
+	position: relative;
+	z-index: 1;
+}
+
+/* CTA button gradient (electric blue → purple-blue) */
+.btn-cta-gradient {
+	background: linear-gradient(90deg, #3b82f6 0%, #6366f1 50%, #8b5cf6 100%);
+	color: white;
+	box-shadow: 0 0 20px rgba(59, 130, 246, 0.35);
+}
+
+.btn-cta-gradient:hover {
+	background: linear-gradient(90deg, #2563eb 0%, #4f46e5 50%, #7c3aed 100%);
+	box-shadow: 0 0 24px rgba(59, 130, 246, 0.45);
 }
