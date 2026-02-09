@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { ContactForm } from "@/components/contact-form";
+import { QuoteForm } from "@/components/quote-form";
 
 const NAV_LINKS = [
 	{ label: "Problem", href: "#problem" },
@@ -335,13 +337,8 @@ export default function Home() {
 							</div>
 						))}
 					</div>
-					<div className="mt-12 text-center">
-						<Link
-							href="#contact"
-							className="inline-flex items-center gap-2 rounded-lg bg-violet-600 px-6 py-3 text-sm font-medium text-white transition hover:bg-violet-500">
-							Request a quote
-							<span aria-hidden>→</span>
-						</Link>
+					<div className="mt-12">
+						<QuoteForm />
 					</div>
 				</div>
 			</section>
@@ -384,40 +381,50 @@ export default function Home() {
 				</div>
 			</section>
 
-			{/* FAQ */}
+			{/* Contact & FAQ */}
 			<section id="contact" className="border-t border-zinc-800/50 px-6 py-24">
-				<div className="mx-auto max-w-3xl">
-					<h2 className="text-3xl font-semibold">Frequently asked questions</h2>
-					<p className="mt-2 text-zinc-400">
-						Contact us via email for more information.
-					</p>
-					<div className="mt-10 space-y-2">
-						{FAQ_ITEMS.map(({ q, a }) => (
-							<details
-								key={q}
-								className="group rounded-lg border border-zinc-800 bg-zinc-900/30">
-								<summary className="flex cursor-pointer list-none items-center justify-between px-5 py-4 text-left font-medium transition hover:bg-zinc-800/30 [&::-webkit-details-marker]:hidden">
-									{q}
-									<span className="shrink-0 transition group-open:rotate-180">
-										<svg
-											className="h-5 w-5 text-zinc-400"
-											fill="none"
-											stroke="currentColor"
-											viewBox="0 0 24 24">
-											<path
-												strokeLinecap="round"
-												strokeLinejoin="round"
-												strokeWidth={2}
-												d="M19 9l-7 7-7-7"
-											/>
-										</svg>
-									</span>
-								</summary>
-								<p className="border-t border-zinc-800 px-5 py-4 text-sm text-zinc-400">
-									{a}
-								</p>
-							</details>
-						))}
+				<div className="mx-auto max-w-3xl space-y-20">
+					<div>
+						<h2 className="text-3xl font-semibold">Contact us</h2>
+						<p className="mt-2 text-zinc-400">
+							Send us a message and we&apos;ll get back to you.
+						</p>
+						<div className="mt-8 rounded-2xl border border-zinc-800 bg-zinc-900/30 p-6">
+							<ContactForm />
+						</div>
+					</div>
+					<div>
+						<h2 className="text-3xl font-semibold">
+							Frequently asked questions
+						</h2>
+						<div className="mt-10 space-y-2">
+							{FAQ_ITEMS.map(({ q, a }) => (
+								<details
+									key={q}
+									className="group rounded-lg border border-zinc-800 bg-zinc-900/30">
+									<summary className="flex cursor-pointer list-none items-center justify-between px-5 py-4 text-left font-medium transition hover:bg-zinc-800/30 [&::-webkit-details-marker]:hidden">
+										{q}
+										<span className="shrink-0 transition group-open:rotate-180">
+											<svg
+												className="h-5 w-5 text-zinc-400"
+												fill="none"
+												stroke="currentColor"
+												viewBox="0 0 24 24">
+												<path
+													strokeLinecap="round"
+													strokeLinejoin="round"
+													strokeWidth={2}
+													d="M19 9l-7 7-7-7"
+												/>
+											</svg>
+										</span>
+									</summary>
+									<p className="border-t border-zinc-800 px-5 py-4 text-sm text-zinc-400">
+										{a}
+									</p>
+								</details>
+							))}
+						</div>
 					</div>
 				</div>
 			</section>
